@@ -9,6 +9,7 @@ using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.EditorData.Document;
 using LuaSTGEditorSharp.EditorData.Document.Meta;
 using LuaSTGEditorSharp.EditorData.Node.NodeAttributes;
+using System.Text.Json.Serialization;
 
 namespace LuaSTGEditorSharp.EditorData.Node.Boss
 {
@@ -145,8 +146,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             attr7 = string.IsNullOrEmpty(attr7) ? "nil" : attr7;
             string attr9 = Macrolize(9);
             attr9 = string.IsNullOrEmpty(attr9) ? "nil" : attr9;
-            yield return sp + "boss.dialog.sentence(self, " + Macrolize(0) + ", " + Macrolize(1) + ", [===[" 
-                + NonMacrolize(2) + "]===], " + attr3 + ", " + attr4 + ", " + Macrolize(5) + ", " + Macrolize(6) +
+            yield return sp + "boss.dialog.sentence(self, " + Macrolize(0) + ", " + Macrolize(1) + ", " 
+                + NonMacrolize(2) + ", " + attr3 + ", " + attr4 + ", " + Macrolize(5) + ", " + Macrolize(6) +
                 ", " + attr7 + ", " + Macrolize(8) + ", " + attr9 + ", " + Macrolize(10) + ", " + Macrolize(11) +
                 ", " + Macrolize(12) + ")\n";
         }
