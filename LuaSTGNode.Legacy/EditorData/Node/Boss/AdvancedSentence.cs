@@ -9,7 +9,6 @@ using LuaSTGEditorSharp.EditorData;
 using LuaSTGEditorSharp.EditorData.Document;
 using LuaSTGEditorSharp.EditorData.Document.Meta;
 using LuaSTGEditorSharp.EditorData.Node.NodeAttributes;
-using System.Text.Json.Serialization;
 
 namespace LuaSTGEditorSharp.EditorData.Node.Boss
 {
