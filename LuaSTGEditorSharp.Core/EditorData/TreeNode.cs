@@ -923,6 +923,8 @@ namespace LuaSTGEditorSharp.EditorData
                 return false;
             if (!toV.MatchParents(this))
                 return false;
+            if (!toV.MatchInvertedParents(this))
+                return false;
             Stack<TreeNode> stack = [];
             stack.Push(toV);
             TreeNode cur;
@@ -1341,6 +1343,19 @@ namespace LuaSTGEditorSharp.EditorData
                 if (toMatch.GetType().Equals(t)) return true;
             }
             return false;
+        }
+
+        private bool MatchInvertedParents(TreeNode toMatch)
+        {
+            Type[] ts = PluginHandler.Plugin.NodeTypeCache.NodeTypeInfo[GetType()].cannotHaveParent;
+            if (toMatch == null) return false;
+            if (ts == null) return true;
+            if (toMatch.IgnoreValidation) return true;
+            foreach (Type t in ts)
+            {
+                if (toMatch.GetType().Equals(t)) return false;
+            }
+            return true;
         }
 
         /// <summary>

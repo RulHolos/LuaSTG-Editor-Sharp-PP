@@ -14,6 +14,7 @@ namespace LuaSTGEditorSharp.EditorData.Node
         public bool classNode;
         public bool leaf;
         public Type[] requireParent;
+        public Type[] cannotHaveParent;
         public Type[][] requireAncestor;
         public bool uniqueness;
         public bool ignoreValidation;
