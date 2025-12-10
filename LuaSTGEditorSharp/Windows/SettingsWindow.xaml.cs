@@ -770,7 +770,7 @@ namespace LuaSTGEditorSharp.Windows
             ];
             //PluginList.ItemsSource = pluginPaths;
 
-            ToolboxSelector.SelectedItem = SelectedToolbox;
+            //ToolboxSelector.SelectedItem = SelectedToolbox;
         }
 
         public SettingsWindow(int i) : this()
