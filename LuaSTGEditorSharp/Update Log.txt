@@ -1,4 +1,10 @@
-﻿-- Update Log（May 4th, 2025）
+﻿-- Update Log（December 9th, 2025）
+
+v0.78.1
+- Added support for LuaSTG-Flux.
+- Added a whole new Toolbox for the BerryLib: WIP (Not usable without raw settings edit)
+- Changed the settings for supporting multiple toolboxes. (Not usable without raw settings edit)
+- Fixed the "Open Recent" window adding duplicate entries infinitely.
 
 v0.78.0
 - New node: "Protected call". Just a "pcall" node accepting children nodes.

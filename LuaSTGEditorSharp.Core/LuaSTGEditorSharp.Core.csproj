@@ -183,6 +183,7 @@
     <Compile Include="EditorData\Node\GroupableAttrItemHelper.cs" />
     <Compile Include="EditorData\Node\IIfChild.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\CannotBanAttribute.cs" />
+    <Compile Include="EditorData\Node\NodeAttributes\CannotHaveParentAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\CannotDeleteAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\ClassNodeAttribute.cs" />
     <Compile Include="EditorData\Node\NodeAttributes\CreateInvokeAttribute.cs" />

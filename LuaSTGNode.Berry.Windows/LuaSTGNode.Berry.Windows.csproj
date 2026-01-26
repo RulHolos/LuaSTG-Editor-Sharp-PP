@@ -92,7 +92,7 @@
       <Name>LuaSTGEditorThemes</Name>
     </ProjectReference>
     <ProjectReference Include="..\LuaSTGNode.Berry\LuaSTGNode.Berry.csproj">
-      <Project>{06f198ea-762c-4b34-84da-b58a6c3e6a79}</Project>
+      <Project>{9967866d-5bcd-4222-8f37-1d05f2ae380b}</Project>
       <Name>LuaSTGNode.Berry</Name>
     </ProjectReference>
   </ItemGroup>

@@ -37,6 +37,7 @@ namespace LuaSTGEditorSharp.EditorData.Node
                     classNode = t.IsDefined(typeof(ClassNodeAttribute), false),
                     leaf = t.IsDefined(typeof(LeafNodeAttribute), false),
                     requireParent = GetTypes(t.GetCustomAttribute<RequireParentAttribute>()?.ParentType),
+                    cannotHaveParent = GetTypes(t.GetCustomAttribute<CannotHaveParentAttribute>()?.ParentType),
                     uniqueness = t.IsDefined(typeof(UniquenessAttribute), false),
                     ignoreValidation = t.IsDefined(typeof(IgnoreValidationAttribute), false),
                     createInvokeID = t.GetCustomAttribute<CreateInvokeAttribute>()?.id,

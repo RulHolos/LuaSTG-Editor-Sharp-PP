@@ -48,12 +48,12 @@ namespace LuaSTGEditorSharp
             return new ViewDefinition(document);
         }
 
-        /*
         public override Type[] StageNodeType
         {
-            get => new Type[] { typeof(EditorData.Node.Stage.Stage) };
+            get => new Type[] { typeof(EditorData.Node.Scenes.Scene) };
         }
 
+        /*
         public override Type[] BossSCNodeType
         {
             get => new Type[] { typeof(EditorData.Node.Boss.BossSpellCard) };
@@ -79,8 +79,6 @@ namespace LuaSTGEditorSharp
         public override int MetaInfoCollectionTypeCount { get => (int)MetaType.__max; }
 
         public override string TargetLSTGVersion => "LuaSTG Sub";
-
-        public override Type[] StageNodeType => [];
 
         public override Type[] BossSCNodeType => [];
     }

@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Resources;
 using System.IO;
 using LuaSTGEditorSharp.EditorData.Node.Tween;
+using LuaSTGEditorSharp.EditorData.Node.Scenes;
 
 namespace LuaSTGEditorSharp
 {
@@ -22,16 +23,25 @@ namespace LuaSTGEditorSharp
         public override void InitFunc()
         {
             var tween = new Dictionary<ToolboxItemData, AddNode>();
-            #region data
+            #region tweens
             tween.Add(new ToolboxItemData("createTween", "/LuaSTGNode.Berry;component/images/createtween.png", "Create Tween")
                 , new AddNode(AddCreateTweenNode));
-            tween.Add(new ToolboxItemData("tweenease", "/LuaSTGNode.Berry;component/images/tweenease.png", "Ease Tween")
+            tween.Add(new ToolboxItemData("tweenEase", "/LuaSTGNode.Berry;component/images/tweenease.png", "Ease Tween")
                 , new AddNode(AddTweenEaseNode));
             #endregion
             ToolInfo.Add("Tweens", tween);
+
+            var scenes = new Dictionary<ToolboxItemData, AddNode>();
+            #region scenes
+            scenes.Add(new ToolboxItemData("sceneGroup", "/LuaSTGNode.Berry;component/images/scenegroup.png", "Create Scene Group")
+                , new AddNode(AddSceneGroup));
+            scenes.Add(new ToolboxItemData("scene", "/LuaSTGNode.Berry;component/images/scene.png", "Create Scene")
+                , new AddNode(AddScene));
+            #endregion
+            ToolInfo.Add("Scenes", scenes);
         }
 
-        #region data
+        #region tweens
 
         private void AddCreateTweenNode()
         {
@@ -41,6 +51,19 @@ namespace LuaSTGEditorSharp
         private void AddTweenEaseNode()
         {
             parent.Insert(new TweenEase(parent.ActivatedWorkSpaceData));
+        }
+
+        #endregion
+        #region scenes
+
+        private void AddSceneGroup()
+        {
+            parent.Insert(new SceneGroup(parent.ActivatedWorkSpaceData));
+        }
+
+        private void AddScene()
+        {
+            parent.Insert(new Scene(parent.ActivatedWorkSpaceData));
         }
 
         #endregion
