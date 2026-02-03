@@ -104,6 +104,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             {
                 yield return a;
             }
+            yield return sp + "local tempCards = {}\n";
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()

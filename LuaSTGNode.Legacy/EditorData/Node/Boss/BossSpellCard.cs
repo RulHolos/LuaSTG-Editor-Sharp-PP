@@ -155,7 +155,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
             }
             yield return sp + "_tmp_sc.perform = " + Macrolize(9) + "\n";
             yield return a 
-                      + sp + "table.insert(_editor_class[" + className + "].cards, _tmp_sc)\n"
+                      + sp + "table.insert(tempCards, _tmp_sc)\n"
                       + sp + (!string.IsNullOrEmpty(NonMacrolize(0)) ? "table.insert(_sc_table, {" + className + ", \"" + cardName
                       + "\", _tmp_sc, #_editor_class[" + className + "].cards, " + Macrolize(9) + "})\n" : "\n");
         }
