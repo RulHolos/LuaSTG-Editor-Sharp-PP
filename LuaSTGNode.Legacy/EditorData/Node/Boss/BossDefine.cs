@@ -99,12 +99,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Boss
                 + sp + "_editor_class[" + fullName + "].name = \"" + displayedName + "\"\n"
                 + sp + "_editor_class[" + fullName + "].bgm = " + Macrolize(4) + "\n"
                 + sp + "_editor_class[" + fullName + "]._bg = " + bg + "\n"
-                + sp + "_editor_class[" + fullName + "].difficulty = \"" + difficultyString + "\"\n";
+                + sp + "_editor_class[" + fullName + "].difficulty = \"" + difficultyString + "\"\n"
+                + sp + "local tempCards = {}\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;
             }
-            yield return sp + "local tempCards = {}\n";
+            
         }
 
         public override IEnumerable<Tuple<int,TreeNode>> GetLines()
