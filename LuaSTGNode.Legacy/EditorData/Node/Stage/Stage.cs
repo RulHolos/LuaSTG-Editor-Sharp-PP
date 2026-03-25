@@ -115,7 +115,7 @@ public class Stage : TreeNode
             yield return a;
         }
         yield return sp + s1 + "task.New(self, function()\n"
-                   + sp + s1 + s1 + "while coroutine.status(self.task[1]) ~= \'dead\' do task.Wait() end\n"
+                   + sp + s1 + s1 + "while rawget(self, \'task\') == nil or #rawget(self, \'task\') == 0 do task.Wait() end\n"
                    + sp + s1 + s1 + "stage.group.FinishReplay()\n"
                    + sp + s1 + s1 + "New(mask_fader, \'close\')\n"
                    + sp + s1 + s1 + "task.New(self, function()\n"
