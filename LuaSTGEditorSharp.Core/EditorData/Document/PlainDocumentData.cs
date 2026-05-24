@@ -130,6 +130,8 @@ namespace LuaSTGEditorSharp.EditorData.Document
                 {
                     c.currentTempPath = mainAppWithInfo.TempPath;
                 }
+                if (parentProj.CompileProcess == null)
+                    parentProj.GatherCompileInfo(mainAppWithInfo);
                 (c as PartialProjectProcess).parentProcess = parentProj.CompileProcess as ProjectProcess;
                 c.projLuaPath = c.currentTempPath + Path.GetFileNameWithoutExtension(RawDocName) + ".lua";
 
