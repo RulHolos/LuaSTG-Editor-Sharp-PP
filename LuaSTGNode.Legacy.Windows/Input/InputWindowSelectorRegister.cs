@@ -61,6 +61,8 @@ namespace LuaSTGEditorSharp.Windows.Input
                 , new string[] { "Easy", "Normal", "Hard", "Lunatic", "Extra" });
             target.Add("objDifficulty"
                 , new string[] { "All", "Easy", "Normal", "Hard", "Lunatic" });
+            target.Add("objType"
+                , new string[] { "_object" });
             target.Add("difficulty"
                 , new string[] { "1", "2", "3", "4", "5" });
             target.Add("SCName"
@@ -196,6 +198,8 @@ namespace LuaSTGEditorSharp.Windows.Input
                 , InputWindowSelector.SelectComboBox("stageGroup"), "Input Stage Group"));
             target.Add("objDifficulty", (src, tar) => new Selector(tar
                 , InputWindowSelector.SelectComboBox("objDifficulty"), "Input Difficulty"));
+            target.Add("objType", (src, tar) => new Selector(tar
+                , InputWindowSelector.SelectComboBox("objType"), "Input Base Class"));
             target.Add("difficulty", (src, tar) => new Selector(tar
                 , InputWindowSelector.SelectComboBox("difficulty"), "Input Difficulty Value"));
             target.Add("prop", (src, tar) => new Selector(tar

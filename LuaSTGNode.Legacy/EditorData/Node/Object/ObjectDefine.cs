@@ -24,17 +24,19 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private ObjectDefine() : base() { }
 
         public ObjectDefine(DocumentData workSpaceData)
-            : this(workSpaceData, "", "All") { }
+            : this(workSpaceData, "", "All", "_object") { }
 
-        public ObjectDefine(DocumentData workSpaceData, string name, string difficulty)
+        public ObjectDefine(DocumentData workSpaceData, string name, string difficulty, string type)
             : base(workSpaceData)
         {
             /*
             attributes.Add(new AttrItem("Name", name, this));
             attributes.Add(new AttrItem("Difficulty", difficulty, this, "objDifficulty"));
+            attributes.Add(new AttrItem("Type", type, this, "objType"));
             */
             Name = name;
             Difficulty = difficulty;
+            Type = type;
         }
 
         [JsonIgnore, NodeAttribute, XmlAttribute("Name")]
@@ -47,17 +49,28 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
 
         [JsonIgnore, NodeAttribute, XmlAttribute("Difficulty")]
         //[DefaultValue("All")]
-        public string Difficulty
-        {
+        public string Difficulty {
             get => DoubleCheckAttr(1, "objDifficulty").attrInput;
             set => DoubleCheckAttr(1, "objDifficulty").attrInput = value;
+        }
+
+        [JsonIgnore, NodeAttribute, XmlAttribute("Class")]
+        //[DefaultValue("_object")]
+        public string Type
+        {
+            get => DoubleCheckAttr(2, "objType", "Base Class").attrInput;
+            set => DoubleCheckAttr(2, "objType", "Base Class").attrInput = value;
         }
 
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
             string difficultyS = NonMacrolize(1) == "All" ? "" : ":" + NonMacrolize(1);
-            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0) + difficultyS) + "\"] = Class(_object)\n";
+
+            string typeInput = NonMacrolize(2);
+            string typeStr = string.IsNullOrEmpty(typeInput) ? "_object" : typeInput;
+
+            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0) + difficultyS) + "\"] = Class(" + typeStr + ")\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;
@@ -76,7 +89,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override string ToString()
         {
             string difficultyS = NonMacrolize(1) == "All" ? "" : ":" + NonMacrolize(1);
-            return "Define object type \"" + NonMacrolize(0) + difficultyS + "\"";
+
+            string typeInput = NonMacrolize(2);
+            string typeStr = (typeInput == "_object" || string.IsNullOrEmpty(typeInput)) ? "object" : typeInput;
+            return "Define " + typeStr + " type \"" + NonMacrolize(0) + difficultyS + "\"";
         }
 
         public override object Clone()
