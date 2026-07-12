@@ -68,7 +68,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             string difficultyS = NonMacrolize(1) == "All" ? "" : ":" + NonMacrolize(1);
 
             string typeInput = NonMacrolize(2);
-            string typeStr = string.IsNullOrEmpty(typeInput) ? "_object" : typeInput;
+            string typeStr = string.IsNullOrEmpty(typeInput) ? "_object" : (typeInput + " or _editor_class[\"" + typeInput + "\"]");
 
             yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0) + difficultyS) + "\"] = Class(" + typeStr + ")\n";
             foreach (var a in base.ToLua(spacing))
