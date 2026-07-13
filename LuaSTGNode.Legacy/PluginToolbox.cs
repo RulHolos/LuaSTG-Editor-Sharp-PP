@@ -469,6 +469,8 @@ namespace LuaSTGEditorSharp
             #region render
             render.Add(new ToolboxItemData("onrender", "/LuaSTGNode.Legacy;component/images/onrender.png", "On Render")
                 , new AddNode(AddOnRenderNode));
+            render.Add(new ToolboxItemData("onrendercustom", "/LuaSTGNode.Legacy;component/images/onrender.png", "On Custom Render Event")
+                , new AddNode(AddOnRenderCustomNode));
             render.Add(new ToolboxItemData("setviewmode", "/LuaSTGNode.Legacy;component/images/setviewmode.png", "Set View Mode")
                 , new AddNode(AddSetViewModeNode));
             render.Add(new ToolboxItemData(true), null);
@@ -1560,6 +1562,9 @@ namespace LuaSTGEditorSharp
             var o = new OnRender(parent.ActivatedWorkSpaceData);
             o.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData));
             parent.Insert(o);
+        }
+        private void AddOnRenderCustomNode() {
+            parent.Insert(new OnRenderCustom(parent.ActivatedWorkSpaceData));
         }
 
         private void AddSetViewModeNode()

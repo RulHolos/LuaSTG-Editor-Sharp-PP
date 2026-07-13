@@ -282,6 +282,7 @@
     <Compile Include="EditorData\Node\Player\PlayerWalkImageSystem.cs" />
     <Compile Include="EditorData\Node\RenderAlikeTypes.cs" />
     <Compile Include="EditorData\Node\Render\CreateRenderTarget.cs" />
+    <Compile Include="EditorData\Node\Render\OnRenderCustom.cs" />
     <Compile Include="EditorData\Node\Render\OnRender.cs" />
     <Compile Include="EditorData\Node\Render\ParticleStop.cs" />
     <Compile Include="EditorData\Node\Render\ParticleFire.cs" />

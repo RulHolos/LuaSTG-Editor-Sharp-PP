@@ -13,7 +13,7 @@ namespace LuaSTGEditorSharp.EditorData.Node
             [ typeof(Stage.Stage), typeof(Object.CallBackFunc), typeof(Object.BGOnFrame), typeof(Object.PlayerDefine), typeof(Object.PlayerInit), typeof(Object.BackgroundInit), typeof(Render.BGOnRender), typeof(Bullet.BulletInit), typeof(Boss.BossBGLayerInit)
             , typeof(Boss.BossBGLayerFrame), typeof(Boss.BossBGLayerRender), typeof(Boss.BossSCStart), typeof(Boss.BossSCFinish)
             , typeof(Laser.LaserInit), typeof(Laser.BentLaserInit), typeof(Data.Function), typeof(Task.TaskDefine)
-            , typeof(Boss.BossInit), typeof(Render.OnRender), typeof(Boss.Dialog), typeof(Enemy.EnemyInit)
+            , typeof(Boss.BossInit), typeof(Render.OnRender), typeof(Render.OnRenderCustom), typeof(Boss.Dialog), typeof(Enemy.EnemyInit)
             , typeof(Object.ObjectInit)
             , typeof(Boss.BossSCBeforeStart), typeof(Boss.BossSCBeforeFinish), typeof(Boss.BossSCAfter)
             , typeof(Bullet.PlayerBulletInit), typeof(Bullet.PlayerBulletFrame), typeof(Bullet.PlayerBulletRender), typeof(Bullet.PlayerBulletColli), typeof(Bullet.PlayerBulletKill), typeof(Bullet.PlayerBulletDel)
