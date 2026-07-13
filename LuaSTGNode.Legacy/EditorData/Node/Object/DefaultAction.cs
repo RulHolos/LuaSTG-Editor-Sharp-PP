@@ -15,7 +15,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
     [Serializable, NodeIcon("defaultaction.png")]
     [RequireAncestor(typeof(CallBackFunc), typeof(Data.Function), typeof(Render.OnRender), typeof(Bullet.PlayerBulletRender),
         typeof(Bullet.PlayerBulletFrame), typeof(Bullet.PlayerBulletColli), typeof(Bullet.PlayerBulletKill),
-        typeof(Bullet.PlayerBulletDel), typeof(Render.ItemOnRender))]
+        typeof(Bullet.PlayerBulletDel), typeof(Render.ItemOnRender), typeof(ObjectInit))]
     [LeafNode]
     public class DefaultAction : TreeNode
     {
@@ -67,15 +67,18 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             }
             else
             {
-                while (!(callBackFunc is ICallBackFunc) && callBackFunc != null)
+                while (!(callBackFunc is ICallBackFunc or ObjectInit) && callBackFunc != null)
                 {
                     callBackFunc = callBackFunc.Parent;
                 }
-                ICallBackFunc func = (ICallBackFunc)callBackFunc;
-                if (callBackFunc != null)
+
+                if (callBackFunc is ICallBackFunc func)
                 {
                     string other = func.FuncName == "colli" ? ", other" : "";
                     yield return sp + curClass + ".base." + func.FuncName + "(self" + other + ")\n";
+                }
+                else if (callBackFunc is ObjectInit) {
+                    yield return sp + curClass + ".base.init(self, self.x, self.y)\n";
                 }
                 else // Keep this for GetLines or it becomes fucky.
                 {
@@ -105,13 +108,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         {
             var a = new List<MessageBase>();
             TreeNode callBackFunc = this;
-            while (!(callBackFunc is ICallBackFunc) && callBackFunc != null)
+            while (!(callBackFunc is ICallBackFunc or ObjectInit) && callBackFunc != null)
             {
                 callBackFunc = callBackFunc.Parent;
             }
             if (callBackFunc == null && string.IsNullOrEmpty(NonMacrolize(0))) 
             {
-                a.Add(new CannotFindAncestorTypeOf("CallBackFunc", this));
+                a.Add(new CannotFindAncestorTypeOf("CallBackFunc or ObjectInit", this));
             }
             return a;
         }
