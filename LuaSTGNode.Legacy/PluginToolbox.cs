@@ -1821,20 +1821,20 @@ namespace LuaSTGEditorSharp
             pl.AddChild(new PlayerBulletInit(parent.ActivatedWorkSpaceData));
             pl.AddChild(new PlayerBulletFrame(parent.ActivatedWorkSpaceData));
             var pl2 = pl.Children.Last();
-            pl2.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "frame"));
+            pl2.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "frame", "false"));
             pl.AddChild(new PlayerBulletRender(parent.ActivatedWorkSpaceData));
             var pl3 = pl.Children.Last();
-            pl3.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "render"));
+            pl3.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "render", "false"));
             pl.AddChild(new PlayerBulletColli(parent.ActivatedWorkSpaceData));
             var pl4 = pl.Children.Last();
-            pl4.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "colli"));
+            pl4.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "colli", "false"));
             pl.AddChild(new PlayerBulletKill(parent.ActivatedWorkSpaceData));
             var pl5 = pl.Children.Last();
             //pl5.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "kill"));
             //pl5.AddChild(new Del(parent.ActivatedWorkSpaceData, "self", "false"));
             pl.AddChild(new PlayerBulletDel(parent.ActivatedWorkSpaceData));
             var pl6 = pl.Children.Last();
-            pl6.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "del"));
+            pl6.AddChild(new DefaultAction(parent.ActivatedWorkSpaceData, "del", "false"));
             parent.Insert(pl);
         }
 

@@ -23,12 +23,13 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         private DefaultAction() : base() { }
 
         public DefaultAction(DocumentData workSpaceData)
-            : this(workSpaceData, "") { }
+            : this(workSpaceData, "", "false") { }
 
-        public DefaultAction(DocumentData workSpaceData, string code)
+        public DefaultAction(DocumentData workSpaceData, string code, string fixParency)
             : base(workSpaceData)
         {
             CodeAddon = code;
+            FixParency = fixParency;
         }
 
         [JsonIgnore, NodeAttribute]
@@ -38,13 +39,31 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             set => DoubleCheckAttr(0, "event", "Event type").attrInput = value;
         }
 
+        [JsonIgnore, NodeAttribute]
+        public string FixParency {
+            get => DoubleCheckAttr(1, "bool", "From parent class?").attrInput;
+            set => DoubleCheckAttr(1, "bool", "From parent class?").attrInput = value;
+        }
+
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
             TreeNode callBackFunc = this;
+            string curClass = "self.class";
+
+            if (NonMacrolize(1) == "true") {
+                TreeNode node = Parent;
+
+                while (node is not null and not ObjectDefine)
+                    node = node.Parent;
+
+                if (node is ObjectDefine def && !string.IsNullOrEmpty(def.Name))
+                    curClass = "_editor_class[\"" + def.Name + "\"]";
+            }
+
             if (!string.IsNullOrEmpty(NonMacrolize(0)))
             {
-                yield return sp + "self.class.base." + Macrolize(0) + "(self)\n";
+                yield return sp + curClass + ".base." + Macrolize(0) + "(self)\n";
             }
             else
             {
@@ -56,7 +75,7 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
                 if (callBackFunc != null)
                 {
                     string other = func.FuncName == "colli" ? ", other" : "";
-                    yield return sp + "self.class.base." + func.FuncName + "(self" + other + ")\n";
+                    yield return sp + curClass + ".base." + func.FuncName + "(self" + other + ")\n";
                 }
                 else // Keep this for GetLines or it becomes fucky.
                 {
