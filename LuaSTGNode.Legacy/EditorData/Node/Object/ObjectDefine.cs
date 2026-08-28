@@ -67,13 +67,17 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
             string sp = Indent(spacing);
             string difficultyS = NonMacrolize(1) == "All" ? "" : ":" + NonMacrolize(1);
 
+            string objName = Lua.StringParser.ParseLua(NonMacrolize(0) + difficultyS);
+            string objAssignment = sp + "_editor_class[\"" + objName;
+
             string typeInput = NonMacrolize(2);
             string typeStr = "_object";
 
             if (!string.IsNullOrEmpty(typeInput) && typeInput != "_object")
                 typeStr = typeInput + " or _editor_class[\"" + typeInput + "\"]";
 
-            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0) + difficultyS) + "\"] = Class(" + typeStr + ")\n";
+            yield return objAssignment + "\"] = Class(" + typeStr + ")\n" +
+                         objAssignment + "\"].name = \"" + objName + "\"\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;

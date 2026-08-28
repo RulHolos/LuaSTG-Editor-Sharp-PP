@@ -74,7 +74,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + NonMacrolize(0) + " = Class(player_class)\n";
+            yield return sp + NonMacrolize(0) + " = Class(player_class)\n" +
+                         sp + NonMacrolize(0) + ".name = \"" + NonMacrolize(0) + "\"\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;
