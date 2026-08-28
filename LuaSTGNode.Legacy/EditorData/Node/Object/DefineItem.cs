@@ -55,7 +55,10 @@ namespace LuaSTGEditorSharp.EditorData.Node.Object
         public override IEnumerable<string> ToLua(int spacing)
         {
             string sp = Indent(spacing);
-            yield return sp + "_editor_class[\"" + Lua.StringParser.ParseLua(NonMacrolize(0)) + "\"] = Class(_object)\n";
+            string className = Lua.StringParser.ParseLua(NonMacrolize(0));
+
+            yield return sp + "_editor_class[\"" + className + "\"] = Class(_object)\n" +
+                         sp + "_editor_class[\"" + className + "\"].name = \"" + className + "\"\n";
             foreach (var a in base.ToLua(spacing))
             {
                 yield return a;
