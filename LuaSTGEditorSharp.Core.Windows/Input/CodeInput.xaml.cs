@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace LuaSTGEditorSharp.Windows.Input
 {
@@ -25,6 +14,10 @@ namespace LuaSTGEditorSharp.Windows.Input
         {
             InitializeComponent();
             codeText.Text = s;
+
+            IAppSettings settings = (IAppSettings)Application.Current;
+            codeText.Options.ConvertTabsToSpaces = settings.SpaceIndentation;
+            codeText.Options.IndentationSize = settings.IndentationSpaceLength;
         }
 
         private void ButtonOK_Click(object sender, RoutedEventArgs e)
@@ -69,7 +62,7 @@ namespace LuaSTGEditorSharp.Windows.Input
 
         private void CodeText_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl) isCtrlDown = false;
+            if (e.Key == Key.LeftCtrl || e.Key == Key.RightCtrl) isCtrlDown = false;
         }
     }
 }
