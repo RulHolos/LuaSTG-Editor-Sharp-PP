@@ -170,12 +170,12 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
         public override string ToString()
         {
             return "Create simple bullet \"" + attributes[0].AttrInput + "\" in \"" + attributes[1].AttrInput
-                + "\" at (" + attributes[2].AttrInput + "), v= " + attributes[3].AttrInput + " ,angle= "
+                + "\" at (" + attributes[2].AttrInput + "), v= " + attributes[3].AttrInput + ", angle= "
                 + attributes[4].AttrInput + (attributes[5].AttrInput == "true" ? ", aim to player" : "")
                 + (attributes[8].AttrInput == "true" ? ", destroyable" : "")
                 + (string.IsNullOrEmpty(attributes[9].AttrInput) ? ", wait " + attributes[9].AttrInput + "frame(s)" : "")
                 + (attributes[10].AttrInput == "true" ? ", rebound" : "") + ", a= " + attributes[11].AttrInput
-                + " , accelrot= " + attributes[12].AttrInput + (attributes[14].AttrInput == "true" ? ", shuttle" : "");
+                + ", accelrot= " + attributes[12].AttrInput + (attributes[14].AttrInput == "true" ? ", shuttle" : "");
         }
 
         public override object Clone()

@@ -170,8 +170,8 @@ namespace LuaSTGEditorSharp.EditorData.Node.Bullet
         {
             return "Create "+ attributes[3].AttrInput + " simple bullets \"" + attributes[0].AttrInput + "\" in \"" 
                 + attributes[1].AttrInput + "\" at (" + attributes[2].AttrInput + ") in " + attributes[4].AttrInput 
-                + " frame(s), v= " + attributes[5].AttrInput + "~" + attributes[6].AttrInput + " ,angle= "
-                + attributes[7].AttrInput + " ,spread= " + attributes[8].AttrInput 
+                + " frame(s), v= " + attributes[5].AttrInput + "~" + attributes[6].AttrInput + ", angle= "
+                + attributes[7].AttrInput + ", spread= " + attributes[8].AttrInput
                 + (attributes[9].AttrInput == "true" ? ", aim to player" : "")
                 + (attributes[12].AttrInput == "true" ? ", destroyable" : "")
                 + (string.IsNullOrEmpty(attributes[13].AttrInput) ? ", wait " + attributes[9].AttrInput + "frame(s)" : "")
